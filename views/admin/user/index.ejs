@@ -1,0 +1,54 @@
+<%- include("../../partials/header.ejs"); %>
+
+    <body>
+        <%- include("../../partials/navbar.ejs"); %>
+            <div class="container p-2">
+                <h2 class="p-2">Users</h2>
+                <a class="btn btn-success m-2" href="/admin/user/new">Criar novo usuário</a>
+                <table class="table table-bordered bg-light">
+                    <thead class="dark-bg text-white">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>CPF</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% user.forEach(user=> { %>
+                            <tr>
+                                <td>
+                                    <%= user.name %>
+                                </td>
+                                <td>
+                                    <%= user.email %>
+                                </td>
+                                <td>
+                                    <%= user.cpf %>
+                                </td>
+                                <td id="td-actions">
+                                    <a href="/admin/user/update/<%= user.id %>" class="btn btn-warning"><i
+                                            class="fas fa-pencil-alt"></i></a>
+                                    <form method="POST" action="/user/delete" style="display: inline;"
+                                        onsubmit="confirmationToDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= user.id %>">
+                                        <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%}) %>
+                    </tbody>
+                </table>
+            </div>
+    </body>
+    <%- include("../../partials/footer.ejs"); %>
+
+        <script>
+            function confirmationToDelete(event, form) {
+                event.preventDefault();
+                const decisionToConfirm = confirm("Você tem certeza que deseja deletar este usuário?")
+                if (decisionToConfirm) {
+                    form.submit()
+                } else { }
+            }
+        </script>

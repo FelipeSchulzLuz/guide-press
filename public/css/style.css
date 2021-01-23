@@ -1,0 +1,115 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+}
+
+body > nav > a,
+body > nav > ul {
+  margin-left: 10px;
+}
+body {
+  width: 100%;
+  background: rgb(222, 239, 255);
+  background: -moz-linear-gradient(
+    top,
+    rgb(222, 239, 255) 0%,
+    rgb(152, 190, 222) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgb(222, 239, 255) 0%,
+    rgb(152, 190, 222) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgb(222, 239, 255) 0%,
+    rgb(152, 190, 222) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 );
+  min-height: 100vh;
+}
+
+th {
+  text-align: center;
+}
+
+#td-actions {
+  min-width: 95px;
+  width: 95px;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+#td-id {
+  min-width: 60px;
+  width: 70px;
+  text-align: center;
+}
+#pg-ctrl {
+  justify-content: flex-end;
+}
+.container {
+  margin-top: 5vh;
+}
+.dropdown-item {
+  text-decoration: none;
+}
+.dropdown-item:hover {
+  background-color: #696969;
+}
+.jumbotron {
+  border-radius: 10px;
+}
+.navbar {
+  min-width: 100%;
+  width: 100%;
+  max-height: 80px;
+  justify-content: flex-start;
+}
+.navbar > ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-control {
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+  justify-content: space-between;
+}
+.page-control a {
+  text-decoration: none;
+  color: #353535;
+}
+
+.dark-bg {
+  background: rgb(63, 76, 107);
+  background: -moz-linear-gradient(
+    top,
+    rgb(63, 76, 107) 0%,
+    rgb(96, 108, 136) 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgb(63, 76, 107) 0%,
+    rgb(96, 108, 136) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgb(63, 76, 107) 0%,
+    rgb(96, 108, 136) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#606c88',GradientType=0 );
+}
+
+
+h2.text-white {
+  margin: 0px;
+}
+li.nav-item {
+  margin-left: 10px;
+}
+
+body > nav > div > ul > li:hover {
+  background-color: #c0c0c0;

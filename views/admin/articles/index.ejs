@@ -1,0 +1,58 @@
+<%- include("../../partials/header.ejs"); %>
+
+    <body>
+        <%- include("../../partials/navbar.ejs"); %>
+            <div class="container p-2">
+                <h2 class="p-2">Artigos</h2>
+                <a class="btn btn-success m-2" href="/admin/articles/new">Criar novo artigo</a>
+                <table class="table table-bordered bg-light">
+                    <thead class="dark-bg text-white">
+                        <tr>
+                            <th id="td-id">Id</th>
+                            <th>Título</th>
+                            <th>Slug</th>
+                            <th>Categoria</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% articles.forEach(article=> { %>
+                            <tr>
+                                <td id="td-id">
+                                    <%= article.id %>
+                                </td>
+                                <td>
+                                    <%= article.title %>
+                                </td>
+                                <td>
+                                    <%= article.slug %>
+                                </td>
+                                <td>
+                                    <%= article.category.title %>
+                                </td>
+                                <td id="td-actions">
+                                    <a href="/admin/articles/update/<%= article.id %>" class="btn btn-warning"><i
+                                            class="fas fa-pencil-alt"></i></a>
+                                    <form method="POST" action="/articles/delete" style="display: inline;"
+                                        onsubmit="confirmationToDelete(event, this)">
+                                        <input type="hidden" name="id" value="<%= article.id %>">
+                                        <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+    </body>
+    <%- include("../../partials/footer.ejs"); %>
+
+        <script>
+            function confirmationToDelete(event, form) {
+                event.preventDefault();
+                const decisionToConfirm = confirm("Você tem certeza que deseja deletar este artigo?")
+                if (decisionToConfirm) {
+                    form.submit()
+                } else { }
+            }
+        </script>
