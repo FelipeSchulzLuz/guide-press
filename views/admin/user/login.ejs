@@ -1,0 +1,23 @@
+<%- include("../../partials/header.ejs"); %>
+    <%- include("../../partials/navbar.ejs"); %>
+
+        <body>
+            <div class="container p-2">
+                <div class="card bg-light">
+                    <div class="card-header dark-bg p-2">
+                        <h2 class="p-2 mt-2 text-white">Login de usuário</h2>
+                    </div>
+
+                    <form method="POST" action="/authenticate" class="p-2 m-2">
+                        <label>Email:</label>
+                        <input type="email" name="email" placeholder="Digite seu email" class="form-control m-2"><br>
+                        <label>Senha:</label>
+                        <input type="password" name="password" placeholder="Digite sua senha" class="form-control m-2"><br>
+                        <hr>
+                        <button class="btn btn-secondary w-100">Login</button>
+                    </form>
+
+                </div>
+            </div>
+        </body>
+        <%- include("../../partials/footer.ejs"); %>

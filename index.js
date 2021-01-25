@@ -8,9 +8,19 @@ const Article = require("./articles/Article")
 const Category = require("./categories/Category")
 const { render } = require("ejs")
 const UserController = require("./user/UserController")
+const session = require('express-session')
+const adminAuth = require('./middlewares/adminAuth')
 
 // # View Engine
 app.set('view engine', 'ejs')
+
+// # Session
+app.use(session({
+    secret: 'textoaqualquer',
+    cookie: {
+        maxAge: 180000
+    }
+}))
 
 // # Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,7 +61,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.get("/admin/", (req, res) => {
+app.get("/admin/",adminAuth, (req, res) => {
 
     res.redirect("/admin/articles")
 })
