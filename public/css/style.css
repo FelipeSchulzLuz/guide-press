@@ -33,7 +33,32 @@ body {
 th {
   text-align: center;
 }
+li {
+  padding: 0 20px;
+}
 
+h2.text-white {
+  margin: 0px;
+}
+li.nav-item {
+  margin-left: 10px;
+}
+
+body > nav > div > ul > li:hover {
+  background-color: #c0c0c0;
+}
+ul.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+nav {
+  width: 100%;
+  max-height: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
 #td-actions {
   min-width: 95px;
   width: 95px;
@@ -45,11 +70,16 @@ th {
   width: 70px;
   text-align: center;
 }
-#pg-ctrl {
-  justify-content: flex-end;
+
+.card{
+  margin: 20px 0;
 }
 .container {
   margin-top: 5vh;
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .dropdown-item {
   text-decoration: none;
@@ -57,24 +87,16 @@ th {
 .dropdown-item:hover {
   background-color: #696969;
 }
-.jumbotron {
-  border-radius: 10px;
-}
-.navbar {
-  min-width: 100%;
-  width: 100%;
-  max-height: 80px;
-  justify-content: flex-start;
-}
+
 .navbar > ul {
   display: flex;
   flex-direction: row;
 }
 
 .page-control {
+  margin-top: 5vh;
   overflow: hidden;
   border-radius: 5px;
-  margin: 10px;
   padding: 15px;
   justify-content: space-between;
 }
@@ -103,13 +125,3 @@ th {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#606c88',GradientType=0 );
 }
 
-
-h2.text-white {
-  margin: 0px;
-}
-li.nav-item {
-  margin-left: 10px;
-}
-
-body > nav > div > ul > li:hover {
-  background-color: #c0c0c0;

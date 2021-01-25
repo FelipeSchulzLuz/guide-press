@@ -2,7 +2,7 @@
 
     <body>
         <%- include("../../partials/navbar.ejs"); %>
-            <div class="container p-2">
+            <div class="container">
                 <h2 class="p-2">Usuários</h2>
                 <a class="btn btn-success m-2" href="/admin/user/new">Criar novo usuário</a>
                 <table class="table table-bordered bg-light">
@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% user.forEach(user=> { %>
+                        <% users.forEach(user=> { %>
                             <tr>
                                 <td>
                                     <%= user.name %>
