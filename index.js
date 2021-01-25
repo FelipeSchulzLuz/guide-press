@@ -8,6 +8,7 @@ const Article = require("./articles/Article")
 const Category = require("./categories/Category")
 const { render } = require("ejs")
 const UserController = require("./user/UserController")
+
 // # View Engine
 app.set('view engine', 'ejs')
 
@@ -32,6 +33,9 @@ connection
 app.use('/', CategoriesController)
 app.use('/', ArticlesController)
 app.use('/', UserController)
+
+
+
 
 app.get("/", (req, res) => {
     Article.findAll({
