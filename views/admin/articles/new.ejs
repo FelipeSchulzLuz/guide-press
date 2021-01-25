@@ -2,17 +2,17 @@
     <%- include("../../partials/navbar.ejs"); %>
 
         <body>
-            <div class="container">
-                <div class="card bg-light">
-                    <div class="card-header dark-bg p-2">
+            <div class="container p-2 m-2 ">
+                <div class="card bg-light m-4">
+                    <div class="card-header dark-bg ">
                         <h2 class="p-2 mt-2 text-white">Cadastro de Artigo</h2>
                     </div>
                     <div class="card-body p-4">
-                        <form method="POST" action="/articles/save" class="p-2 m-2">
+                        <form method="POST" action="/articles/save" class="p-2 m-2 ">
                             <label>Título do Artigo:</label>
                             <input type="text" name="title" placeholder="Defina o título do artigo"
-                                class="form-control p-1"><br>
-                            <textarea class="form-control p-1" name="body" id="article-textarea"
+                                class="form-control m-1"><br>
+                            <textarea class="form-control m-1" name="body" id="article-textarea"
                                 placeholder="Escreva o artigo aqui!"></textarea>
                             <label class="m-1">Categoria:</label>
                             <select name="category" class="form-control">
@@ -23,7 +23,7 @@
                                     <% })%>
                             </select>
                             <hr>
-                            <button class="btn btn-secondary">Cadastrar</button>
+                            <a class="btn btn-secondary w-100">Cadastrar</a>
                         </form>
                     </div>
                 </div>

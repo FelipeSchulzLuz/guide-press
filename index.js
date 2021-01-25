@@ -62,7 +62,7 @@ app.get("/", (req, res) => {
 })
 
 app.get("/admin/",adminAuth, (req, res) => {
-
+    const isLoged = req.session.user
     res.redirect("/admin/articles")
 })
 

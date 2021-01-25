@@ -5,18 +5,18 @@ const bcrypt = require('bcryptjs')
 const adminAuth = require('../middlewares/adminAuth')
 const session = require('express-session')
 
-router.get("/admin/user",adminAuth, (req, res) => {
+router.get("/admin/user", adminAuth, (req, res) => {
     User.findAll().then(users => {
         res.render("admin/user/index", { users: users })
     })
 })
 
-router.get("/admin/user/new",adminAuth, (req, res) => {
+router.get("/admin/user/new", adminAuth, (req, res) => {
     res.render('admin/user/new')
 })
 
 
-router.post('/user/save',adminAuth, (req, res) => {
+router.post('/user/save', adminAuth, (req, res) => {
     let users = {
         id: req.body.id,
         name: req.body.name,
@@ -74,7 +74,7 @@ router.post('/user/save',adminAuth, (req, res) => {
 
 
 
-router.post("/user/delete",adminAuth, (req, res) => {
+router.post("/user/delete", adminAuth, (req, res) => {
     const id = req.body.id;
     if (id != undefined) {
         if (!isNaN(id)) {
@@ -85,10 +85,10 @@ router.post("/user/delete",adminAuth, (req, res) => {
             }).then(() => {
                 res.redirect("/admin/user")
             })
-        } else { 
+        } else {
             res.redirect("/admin/user")
         }
-    } else { 
+    } else {
         res.redirect("/admin/user")
     }
 })
@@ -96,7 +96,7 @@ router.post("/user/delete",adminAuth, (req, res) => {
 
 
 
-router.get("/admin/user/update/:id",adminAuth, (req, res) => {
+router.get("/admin/user/update/:id", adminAuth, (req, res) => {
     const id = req.params.id
     if (isNaN(id)) {
         res.redirect("/admin/user")
@@ -113,7 +113,7 @@ router.get("/admin/user/update/:id",adminAuth, (req, res) => {
 })
 
 
-router.post("/user/update",adminAuth, (req, res) => {
+router.post("/user/update", adminAuth, (req, res) => {
     let users = {
         id: req.body.id,
         name: req.body.name,
@@ -127,9 +127,11 @@ router.post("/user/update",adminAuth, (req, res) => {
     if (isNaN(users.id || users.password != users.repassword)) {
         res.redirect("/admin/user")
     } else {
-        User.update({ ...users,
+        User.update({
+            ...users,
             password: hash,
-            repassword: hash }, {
+            repassword: hash
+        }, {
             where: {
                 id: users.id
             }
@@ -144,21 +146,22 @@ router.post("/user/update",adminAuth, (req, res) => {
 })
 
 router.get("/login", (req, res) => {
+    
     res.render("admin/user/login")
 })
 
 router.post("/authenticate", (req, res) => {
     let email = req.body.email
     let password = req.body.password
-    User.findOne({ where: { email: email }}).then(user => {
+    User.findOne({ where: { email: email } }).then(user => {
         if (user != undefined) {
             let correct = bcrypt.compareSync(password, user.password)
             if (correct) {
                 req.session.user = {
                     id: user.id,
-                    email: user.email   
+                    email: user.email
                 }
-                res.redirect("/")
+                res.redirect("/admin/articles")
             } else {
                 console.log("Password nao confere");
                 res.redirect("/login")
@@ -169,5 +172,9 @@ router.post("/authenticate", (req, res) => {
         }
     })
 })
+router.get("/logout"), (req, res) => {
+    req.session.user = undefined
+    res.redirect("/")
+}
 
 module.exports = router;
