@@ -48,6 +48,7 @@ app.use('/', UserController)
 
 
 app.get("/", (req, res) => {
+    let session = req.session
     Article.findAll({
         limit: 3,
         order:[['id', 'DESC']]
@@ -55,19 +56,20 @@ app.get("/", (req, res) => {
         Category.findAll().then(categories => {
             res.render("index", {
                 articles: articles,
-                categories: categories
+                categories: categories,
+                session: session
             })
         })
     })
 })
 
 app.get("/admin/",adminAuth, (req, res) => {
-    const isLoged = req.session.user
     res.redirect("/admin/articles")
 })
 
 app.get("/:slug", (req, res) => {
-    const slug = req.params.slug
+    let slug = req.params.slug
+    let session = req.session
     Article.findOne({
         where: {
             slug: slug
@@ -77,7 +79,8 @@ app.get("/:slug", (req, res) => {
             Category.findAll().then(categories => {
                 res.render("article", {
                     article: article,
-                    categories: categories
+                    categories: categories,
+                    session: session
                 })
             })
         } else {
@@ -91,6 +94,7 @@ app.get("/:slug", (req, res) => {
 
 app.get("/category/:slug", (req, res) => {
     const slug = req.params.slug
+    let session = req.session
     Category.findOne({
         where: {
             slug: slug
@@ -101,7 +105,8 @@ app.get("/category/:slug", (req, res) => {
             Category.findAll().then(categories => {
                 res.render("index", {
                     articles: category.articles,
-                    categories: categories
+                    categories: categories,
+                    session:session
                 })
             })
 
