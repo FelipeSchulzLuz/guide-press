@@ -1,16 +1,17 @@
 <%- include("../../partials/header"); %>
+<%- include("../../partials/navbar.ejs"); %>
     <body>
-        <%- include("../../partials/navbar.ejs"); %>
-            <div class="container">
-                <div class="card bg-light m-2">
-                    <div class="card-header dark-bg p-4">
+            <div class="container p-2 m-2 ">
+                <div class="card bg-light m-4">
+                    <div class="card-header dark-bg ">
                         <h2 class="p-2 mt-2 text-white">Cadastro de categoria</h2>
                     </div>
                     <div class="card-body p-4">
                         <form method="POST" action="/categories/save">
+                            <label>Título:</label>
                             <input type="text" name="title" placeholder="Defina o título da categoria"
-                                class="form-control">
-                            <button class="btn btn-secondary mt-4">Cadastrar</button>
+                                class="form-control m-1">
+                            <a class="btn btn-secondary w-100 mt-4">Cadastrar</a>
                         </form>
                     </div>
                 </div>

@@ -3,13 +3,23 @@
   padding: 0px;
   vertical-align: middle;
 }
+html {
+  min-height: 100vh;
+}
 
 body > nav > a,
 body > nav > ul {
   margin-left: 10px;
 }
+body{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 body {
   width: 100%;
+  height: 100%;
   background: rgb(222, 239, 255);
   background: -moz-linear-gradient(
     top,
@@ -27,29 +37,47 @@ body {
     rgb(152, 190, 222) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#deefff', endColorstr='#98bede',GradientType=0 );
-  min-height: 100vh;
 }
-
 th {
   text-align: center;
 }
-
+li {
+  padding: 0 20px;
+}
+li.nav-item {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+body > nav > div > ul > li:hover {
+  background-color: #c0c0c0;
+}
+ul.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+nav {
+  width: 100%;
+  max-height: 80px;
+}
 #td-actions {
   min-width: 95px;
   width: 95px;
   flex-wrap: wrap;
-  padding: 0 4px;
+  padding: 2px;
+  margin: 2px;
 }
 #td-id {
   min-width: 60px;
   width: 70px;
   text-align: center;
 }
-#pg-ctrl {
-  justify-content: flex-end;
-}
 .container {
   margin-top: 5vh;
+  margin-bottom: 5vh;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 .dropdown-item {
   text-decoration: none;
@@ -57,32 +85,23 @@ th {
 .dropdown-item:hover {
   background-color: #696969;
 }
-.jumbotron {
-  border-radius: 10px;
-}
-.navbar {
-  min-width: 100%;
-  width: 100%;
-  max-height: 80px;
-  justify-content: flex-start;
-}
 .navbar > ul {
   display: flex;
   flex-direction: row;
 }
-
 .page-control {
+  margin-top: 5vh;
   overflow: hidden;
   border-radius: 5px;
-  margin: 10px;
   padding: 15px;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 .page-control a {
   text-decoration: none;
   color: #353535;
 }
-
 .dark-bg {
   background: rgb(63, 76, 107);
   background: -moz-linear-gradient(
@@ -103,13 +122,3 @@ th {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f4c6b', endColorstr='#606c88',GradientType=0 );
 }
 
-
-h2.text-white {
-  margin: 0px;
-}
-li.nav-item {
-  margin-left: 10px;
-}
-
-body > nav > div > ul > li:hover {
-  background-color: #c0c0c0;

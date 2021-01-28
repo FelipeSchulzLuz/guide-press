@@ -1,27 +1,27 @@
 <%- include("../../partials/header"); %>
+<%- include("../../partials/navbar.ejs"); %>
 
     <body>
-        <%- include("../../partials/navbar.ejs"); %>
-            <div class="container">
-                <div class="card bg-light m-2">
-                    <div class="card-header dark-bg p-4">
+            <div class="container p-2 m-2 ">
+                <div class="card bg-light m-4">
+                    <div class="card-header dark-bg ">
                         <h2 class="p-2 mt-2 text-white">Edição de usuário</h2>
                     </div>
                     <div class="card-body p-4">
                         <form method="POST" action="/user/update">
                             <input type="hidden" name="id" value="<%= user.id %>">
                             <label>Nome:</label>
-                            <input type="text" name="name" placeholder="Digite seu nome" class="form-control m-2"
+                            <input type="text" name="name" placeholder="Digite seu nome" class="form-controlp-2 m-2 "
                                 value="<%= user.name%>">
                             <label>Email:</label>
                             <input type="email" name="email" placeholder="Digite um e-mail valido"
-                                class="form-control m-2" value="<%= user.email%>">
+                                class="form-controlp-2 m-2 " value="<%= user.email%>">
                             <label>Senha:</label>
                             <input type="password" name="password" placeholder="Digite sua senha"
-                                class="form-control m-2" value="<%= user.password%>">
+                                class="form-controlp-2 m-2 " value="<%= user.password%>">
                             <label>Confirme a senha:</label>
                             <input type="password" name="repassword" placeholder="Digite sua senha"
-                                class="form-control m-2" value="<%= user.repassword%>">
+                                class="form-controlp-2 m-2 " value="<%= user.repassword%>">
                             <button class="btn btn-secondary btn-block mt-4 w-100">Cadastrar</button>
                         </form>
                     </div>

@@ -8,8 +8,19 @@ const Article = require("./articles/Article")
 const Category = require("./categories/Category")
 const { render } = require("ejs")
 const UserController = require("./user/UserController")
+const session = require('express-session')
+const adminAuth = require('./middlewares/adminAuth')
+
 // # View Engine
 app.set('view engine', 'ejs')
+
+// # Session
+app.use(session({
+    secret: 'textoaqualquer',
+    cookie: {
+        maxAge: 180000
+    }
+}))
 
 // # Body Parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +44,11 @@ app.use('/', CategoriesController)
 app.use('/', ArticlesController)
 app.use('/', UserController)
 
+
+
+
 app.get("/", (req, res) => {
+    let session = req.session
     Article.findAll({
         limit: 3,
         order:[['id', 'DESC']]
@@ -41,19 +56,20 @@ app.get("/", (req, res) => {
         Category.findAll().then(categories => {
             res.render("index", {
                 articles: articles,
-                categories: categories
+                categories: categories,
+                session: session
             })
         })
     })
 })
 
-app.get("/admin/", (req, res) => {
-
+app.get("/admin/",adminAuth, (req, res) => {
     res.redirect("/admin/articles")
 })
 
 app.get("/:slug", (req, res) => {
-    const slug = req.params.slug
+    let slug = req.params.slug
+    let session = req.session
     Article.findOne({
         where: {
             slug: slug
@@ -63,7 +79,8 @@ app.get("/:slug", (req, res) => {
             Category.findAll().then(categories => {
                 res.render("article", {
                     article: article,
-                    categories: categories
+                    categories: categories,
+                    session: session
                 })
             })
         } else {
@@ -77,6 +94,7 @@ app.get("/:slug", (req, res) => {
 
 app.get("/category/:slug", (req, res) => {
     const slug = req.params.slug
+    let session = req.session
     Category.findOne({
         where: {
             slug: slug
@@ -87,7 +105,8 @@ app.get("/category/:slug", (req, res) => {
             Category.findAll().then(categories => {
                 res.render("index", {
                     articles: category.articles,
-                    categories: categories
+                    categories: categories,
+                    session:session
                 })
             })
 
