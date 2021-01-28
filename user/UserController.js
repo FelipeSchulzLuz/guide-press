@@ -146,7 +146,6 @@ router.post("/user/update", adminAuth, (req, res) => {
 })
 
 router.get("/login", (req, res) => {
-    
     res.render("admin/user/login")
 })
 
